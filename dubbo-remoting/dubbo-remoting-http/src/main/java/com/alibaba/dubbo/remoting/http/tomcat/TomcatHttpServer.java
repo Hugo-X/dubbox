@@ -65,7 +65,7 @@ public class TomcatHttpServer extends AbstractHttpServer {
         tomcat.getConnector().setProperty("maxKeepAliveRequests", "-1");
         tomcat.getConnector().setProtocol("org.apache.coyote.http11.Http11NioProtocol");
 
-        Context context = tomcat.addContext("/", baseDir);
+        Context context = tomcat.addContext("", baseDir);
         Tomcat.addServlet(context, "dispatcher", new DispatcherServlet());
         context.addServletMapping("/*", "dispatcher");
         ServletManager.getInstance().addServletContext(url.getPort(), context.getServletContext());
